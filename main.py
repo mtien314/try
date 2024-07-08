@@ -1,16 +1,13 @@
-import mysql.connector
 import streamlit as st
+import sqlite3
+import pandas as pd
 
-host = st.secrets["HOST"]
-port = st.secrets["PORT"]
-user = st.secrets["USER"]
-password = st.secrets["PASSWORD"]
-db = st.secrets["DB"]
-conn = mysql.connector.connect(host = host,
-                       port =port,
-                       user = user,
-                       passwd = password,
-                       db = db)
-
+conn = sqlite3.connect('pets.db')
 cursor = conn.cursor()
-st.write("HI")
+
+#create table
+data = cursor.execute('SELECT * FROM pets')
+result = cursor.fetchall()
+df = pd.DataFrame(result, columns = ['Name'])
+print(df)
+cursor.close()
