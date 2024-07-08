@@ -1,9 +1,14 @@
 import mysql.connector
 
-conn = mysql.connector.connect(host = "127.0.0.1",
-                       port ="3306",
-                       user = "root",
-                       passwd = "123",
-                       db = "work")
+host = st.secret["HOST"]
+port = st.secret["PORT"]
+user = st.secret["USER"]
+password = st.secret["PASSWORD"]
+db = st.secret["DB"]
+conn = mysql.connector.connect(host = host,
+                       port =port,
+                       user = user,
+                       passwd = password,
+                       db = db)
 
 cursor = conn.cursor()
