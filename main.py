@@ -1,4 +1,5 @@
 import mysql.connector
+import streamlit as st
 
 host = st.secret["HOST"]
 port = st.secret["PORT"]
