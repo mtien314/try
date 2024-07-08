@@ -22,7 +22,7 @@ def run_query(query):
 # Streamlit app
 st.title('MariaDB Streamlit App')
 
-query = "SELECT * FROM your_table LIMIT 10;"
+query = "SELECT * FROM user;"
 data = run_query(query)
 
 st.write(data)
