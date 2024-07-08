@@ -1,28 +1,9 @@
-import streamlit as st
-import sqlalchemy
-from sqlalchemy import create_engine
-import pandas as pd
+import mysql.connector
 
-# MariaDB connection details from secrets
-DB_HOST = "127.0.0.1"
-DB_PORT = "3306"
-DB_NAME = "work"
-DB_USER = "root"
-DB_PASSWORD = "123"
+conn = mysql.connector.connect(host = "127.0.0.1",
+                       port ="3306",
+                       user = "root",
+                       passwd = "123",
+                       db = "work")
 
-# Create the database connection
-engine = create_engine(f'mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}')
-
-# Function to run a query and return a DataFrame
-def run_query(query):
-    with engine.connect() as connection:
-        result = pd.read_sql(query, connection)
-    return result
-
-# Streamlit app
-st.title('MariaDB Streamlit App')
-
-query = "SELECT * FROM user;"
-data = run_query(query)
-
-st.write(data)
+cursor = conn.cursor()
