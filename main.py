@@ -4,11 +4,11 @@ from sqlalchemy import create_engine
 import pandas as pd
 
 # MariaDB connection details from secrets
-DB_HOST = st.secrets["DB_HOST"]
-DB_PORT = st.secrets["DB_PORT"]
-DB_NAME = st.secrets["DB_NAME"]
-DB_USER = st.secrets["DB_USER"]
-DB_PASSWORD = st.secrets["DB_PASSWORD"]
+DB_HOST = "127.0.0.1"
+DB_PORT = "3306"
+DB_NAME = "work"
+DB_USER = "root"
+DB_PASSWORD = "123"
 
 # Create the database connection
 engine = create_engine(f'mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}')
