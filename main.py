@@ -13,3 +13,4 @@ conn = mysql.connector.connect(host = host,
                        db = db)
 
 cursor = conn.cursor()
+st.write("HI")
